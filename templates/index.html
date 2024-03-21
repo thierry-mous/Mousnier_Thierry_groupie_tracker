@@ -1,0 +1,104 @@
+{{define "accueil"}}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="body-index">
+    <header>
+        <div class="header-category">
+            <div><img class="img-logo" src="/static/img/logomh-removebg-preview.png" alt="logo"></div>
+            <div class="all-search">
+                <form class="search" action="#" method="get">
+                    <input type="text" class="search-bar" placeholder="Search">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div>
+            <div class="all-category">
+                <div>
+                    <a href="/category?type=armor" class="category-armor">Armor</a>
+                </div>
+                <div>
+                    <a href="/category?type=weapon" class="category-weapon">Weapon</a>
+                </div>
+                <div>
+                    <a href="/category?type=monster" class="category-monster">Monster</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="carrousel">
+        <div id="container">
+            <div class="slide"></div>
+        </div>
+        <div class="arrow-container">
+            <img src="/static/img/keyboard-right-arrow-button-1_icon-icons.com_72690-removebg-preview.png" alt="fleche"
+                class="bouton right" id="g">
+            <img src="/static/img/keyboard-right-arrow-button-1_icon-icons.com_72690-removebg-preview.png" alt="fleche"
+                class="bouton left" id="d">
+
+        </div>
+        <script>
+            const div = document.querySelector('.slide');
+            const arrowLeft = document.querySelector('.left');
+            const arrowRight = document.querySelector('.right');
+            let index = 1;
+            div.style.background = `center / cover url(../static/img/image_${index}.jpg)`;
+
+            arrowLeft.addEventListener('click', () => {
+                if (index === 1) {
+                    index = 3;
+                } else {
+                    index--;
+                }
+                div.style.background = `url(../static/img/image_${index}.jpg)`;
+            })
+            arrowRight.addEventListener('click', () => {
+                if (index === 3) {
+                    index = 1;
+                } else {
+                    index++;
+                }
+                div.style.background = `url(../static/img/image_${index}.jpg)`;
+            })
+        </script>
+    </div>
+    <div class="all-box">
+                <a class="box1" href="#">
+                    <img class="img-box" src="/static/img/favorite.png" alt="image palico">
+                    <h2>favorite page of the community</h2>
+                </a>
+                    <a class="box2" href="">
+                        <img class="img-box" src="/static/img/Collection.png" alt="image collection">
+                        <h2>Collection</h2>
+                    </a>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer-social">
+                <div>
+                    <a href="" class="social-facebook">Facebook</a>
+                </div>
+                <div>
+                    <a href="" class="social-twitter">X</a>
+                </div>
+                <div>
+                    <a href="" class="social-instagram">Instagram</a>
+                </div>  
+            </div>
+            <div class="img-logo">
+                <img src="/static/img/logomh-removebg-preview.png" alt="logo">
+            </div>
+            <div class="page">
+                <a href="about.html">about</a>
+                <a href="#">legal notice</a>
+            </div>
+           
+        </div>
+    </footer>
+</body>
+
+</html>
+{{end}}

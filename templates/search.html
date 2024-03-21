@@ -1,0 +1,35 @@
+{{define "search"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="body-category">
+    <header>
+        <div class="header-category">
+            <div><img class="img-logo" src="/static/img/logomh-removebg-preview.png" alt="logo"></div>
+            <div class="all-search">
+                <form class="search" action="#" method="get">
+                    <input type="text" class="search-bar" placeholder="Search">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div>
+            <div class="all-category">
+                <div>
+                    <a href="/category?type=armor" class="category-armor">Armor</a>
+                </div>
+                <div>
+                    <a href="/category?type=weapon" class="category-weapon">Weapon</a>
+                </div>
+                <div>
+                    <a href="/category?type=monster" class="category-monster">Monster</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <p>{{.}}</p>
+</body>
+{{end}}

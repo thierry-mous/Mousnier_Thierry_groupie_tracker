@@ -1,0 +1,95 @@
+{{define "resourcepagemonster"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Name}}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="body-category">
+    <header>
+        <div class="header-category">
+                <div><img class="img-logo" src="/static/img/logomh-removebg-preview.png" alt="logo"></div>
+                <div class="all-search">
+                    <form class="search" action="#" method="get">
+                        <input type="text" class="search-bar" placeholder="Search">
+                        <button type="submit" class="search-btn">Search</button>
+                    </form>
+                </div>
+                <div class="all-category">
+                    <div>
+                        <a href="/category?type=armor" class="category-armor">Armor</a>
+                    </div>
+                    <div>
+                        <a href="/category?type=weapon" class="category-weapon">Weapon</a>
+                    </div>
+                    <div>
+                        <a href="/category?type=monster" class="category-monster">Monster</a>
+                    </div>
+                </div>
+        </div>
+    </header>
+    <div class="content">
+        <h1>{{.Name}}</h1>
+        <p><strong>Type:</strong> {{.Type}}</p>
+        <p><strong>Species:</strong> {{.Species}}</p>
+        <p><strong>Elements:</strong> {{range .Elements}}{{.}}, {{end}}</p>
+        <p><strong>Description:</strong> {{.Description}}</p>
+        <h2>Ailments:</h2>
+        <ul>
+            {{range .Ailments}}
+            <li>{{.Name}} - {{.Description}}</li>
+            {{end}}
+        </ul>
+        <h2>Locations:</h2>
+        <ul>
+            {{range .Locations}}
+            <li>{{.Name}} - {{.Zone}}</li>
+            {{end}}
+        </ul>
+        <h2>Resistances:</h2>
+        <ul>
+            {{range .Resistances}}
+            <li>{{.Type}} - {{.Amount}}</li>
+            {{end}}
+        </ul>
+        <h2>Weaknesses:</h2>
+        <ul>
+            {{range .Weaknesses}}
+            <li>{{.Type}} - {{.Amount}}</li>
+            {{end}}
+        </ul>
+        <h2>Rewards:</h2>
+        <ul>
+            {{range .Rewards}}
+            <li>{{.Type}} - {{.Rank}} - {{.Condition}}</li>
+            {{end}}
+        </ul>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer-social">
+                <div>
+                    <a href="" class="social-facebook">Facebook</a>
+                </div>
+                <div>
+                    <a href="" class="social-twitter">X</a>
+                </div>
+                <div>
+                    <a href="" class="social-instagram">Instagram</a>
+                </div>
+            </div>
+            <div class="img-logo">
+                <img src="/static/img/logomh-removebg-preview.png" alt="logo">
+            </div>
+            <div class="page">
+                <a href="about.html">about</a>
+                <a href="#">legal notice</a>
+            </div>
+           
+        </div>
+    </footer>
+</body>
+</html>
+{{end}}
