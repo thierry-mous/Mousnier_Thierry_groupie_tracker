@@ -31,41 +31,50 @@
         </div>
     </header>
     <div class="content">
-        <h1>{{.Name}}</h1>
+        <div class="start-monster">
+              <h1>{{.Name}}</h1>
         <p><strong>Type:</strong> {{.Type}}</p>
         <p><strong>Species:</strong> {{.Species}}</p>
         <p><strong>Elements:</strong> {{range .Elements}}{{.}}, {{end}}</p>
         <p><strong>Description:</strong> {{.Description}}</p>
-        <h2>Ailments:</h2>
-        <ul>
+        </div>
+        <div class="monster-ailments">
+  <h2>Ailments:</h2>
             {{range .Ailments}}
-            <li>{{.Name}} - {{.Description}}</li>
+            <p>{{.Name}} - {{.Description}}</p>
             {{end}}
-        </ul>
+        </div>
+      <div class="monster-location">
         <h2>Locations:</h2>
-        <ul>
             {{range .Locations}}
-            <li>{{.Name}} - {{.Zone}}</li>
+            <p>{{.Name}} - {{.ZoneCount}}</p>
             {{end}}
-        </ul>
-        <h2>Resistances:</h2>
-        <ul>
+        
+      </div>
+        <div class="wandr">
+            <div>
+                 <h2>Resistances:</h2>
             {{range .Resistances}}
-            <li>{{.Type}} - {{.Amount}}</li>
+            <p>{{.Element}} - {{.Condition}}</p>
             {{end}}
-        </ul>
-        <h2>Weaknesses:</h2>
-        <ul>
-            {{range .Weaknesses}}
-            <li>{{.Type}} - {{.Amount}}</li>
-            {{end}}
-        </ul>
-        <h2>Rewards:</h2>
-        <ul>
-            {{range .Rewards}}
-            <li>{{.Type}} - {{.Rank}} - {{.Condition}}</li>
-            {{end}}
-        </ul>
+            </div>
+            <div class="monster-weakness">
+            
+            <h2>Weaknesses:</h2>
+                {{range .Weaknesses}}
+                <p>{{.Element}}  {{.Stars}} </p>
+                {{end}}
+            </div>
+        </div>
+        
+        <div class="monster-reward">
+            <h2>Rewards:</h2>
+
+                {{range .Rewards}}
+                <p>{{.Item}}</p>
+                {{end}}
+            
+        </div>
     </div>
     <footer>
         <div class="footer">

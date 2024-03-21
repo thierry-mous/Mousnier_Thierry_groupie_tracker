@@ -32,9 +32,19 @@
             </div>
         </div>
     </header>
-    <h1>{{.Armor.Name}}</h1>
-    <h1>{{.Piece.Type}}</h1>
-    <a href="/add?id={{.Armor.ID}}&id_piece={{.Piece.ID}}&type=armor">fav</a>
+    <div class="title-piece">
+         <h1>{{.Armor.Name}}</h1>
+         <a href="/add?id={{.Armor.ID}}&id_piece={{.Piece.ID}}&type=armor">fav</a>
+    </div>
+    <div class="img-piece">
+         <h1>{{.Piece.Type}}</h1>
+        <img src="{{.Piece.Assets2.ImageMale2}}" alt="Armor Image">
+    </div>
+    <div class="info-piece">
+        <div>
+            <p>Armor rank: {{.Piece.Rank}}</p>
+            <p>Rarity: {{.Piece.Rarity}}</p>
+        </div>
     <footer>
         <div class="footer">
             <div class="footer-social">
