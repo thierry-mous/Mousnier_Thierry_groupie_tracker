@@ -431,46 +431,7 @@ button {
 
 /* css page monster */
 
-.start-monster h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.start-monster p {
-    margin-bottom: 5px;
-}
-
-.monster-ailments,
-.monster-location,
-.monster-reward {
-    margin-top: 20px;
-}
-
-.monster-ailments h2,
-.monster-location h2,
-.monster-reward h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.monster-ailments p,
-.monster-location p,
-.monster-reward p {
-    margin-bottom: 5px;
-}
-
-.wandr {
-    display: flex;
-}
-
-.wandr > div {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.monster-weakness {
-    margin-top: 20px;
-}
+/* css page armor */
 
 /* css page weapon */
 

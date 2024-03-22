@@ -216,3 +216,90 @@ func SearchFunc(w http.ResponseWriter, r *http.Request) {
 	templates.Temp.ExecuteTemplate(w, "search", ListSearchWeapon)
 
 }
+
+type ResultFilter struct {
+	Monster []backend.Monster
+	Armor   []backend.ArmorSet
+	Weapon  []backend.Weapon
+}
+
+func CollectionPage(w http.ResponseWriter, r *http.Request) {
+	typeCollection := r.URL.Query().Get("collection")
+	var data ResultFilter
+
+	switch typeCollection {
+	case "monster":
+		monsters, err := backend.FetchMonsterData("https://mhw-db.com/monsters")
+		if err != nil {
+			fmt.Println("Erreur lors de la récupération des données de monstres:", err)
+			http.Error(w, "Erreur lors de la récupération des données de monstres", http.StatusInternalServerError)
+			return
+		}
+		data.Monster = monsters
+		fmt.Println("iciciciciciciccicicicici", data.Monster)
+		filterMonster := r.FormValue("monster")
+		fmt.Println("iciciciciciciccicicicici", filterMonster)
+
+		if filterMonster != "" {
+			var ListFilterMonster []backend.Monster
+			for _, Monster := range data.Monster {
+				for _, Elements := range Monster.Elements {
+					if strings.Contains(Elements, filterMonster) {
+						ListFilterMonster = append(ListFilterMonster, Monster)
+						break
+					}
+				}
+
+			}
+			data.Monster = ListFilterMonster
+		}
+		break
+	case "armor":
+		armorSets, err := backend.FetchArmorSets("https://mhw-db.com/armor/sets")
+		if err != nil {
+			fmt.Println("Erreur lors de la récupération des données:", err)
+			return
+		}
+		data.Armor = armorSets.ArmorSets
+		filterArmor := r.FormValue("armor")
+		if filterArmor != "" {
+			var ListFilterArmor []backend.ArmorSet
+			for _, armorSets := range data.Armor {
+				for _, piece := range armorSets.Pieces {
+					if strings.Contains(piece.Type, filterArmor) {
+						ListFilterArmor = append(ListFilterArmor, armorSets)
+						break
+					}
+				}
+			}
+			data.Armor = ListFilterArmor
+		}
+		break
+	case "weapon":
+		weapons, err := backend.FetchWeaponData("https://mhw-db.com/weapons")
+		if err != nil {
+			fmt.Println("Erreur lors de la récupération des données d'armes:", err)
+			http.Error(w, "Erreur lors de la récupération des données d'armes", http.StatusInternalServerError)
+			return
+		}
+		data.Weapon = weapons
+		filterWeapon := r.FormValue("weapon")
+		if filterWeapon != "" {
+			var ListFilterWeapon []backend.Weapon
+			for _, weapon := range data.Weapon {
+				if strings.Contains(weapon.Type, filterWeapon) {
+					ListFilterWeapon = append(ListFilterWeapon, weapon)
+				}
+			}
+			data.Weapon = ListFilterWeapon
+		}
+		break
+	default:
+		data.Monster, _ = backend.FetchMonsterData("https://mhw-db.com/monsters")
+		armors, _ := backend.FetchArmorSets("https://mhw-db.com/armor/sets")
+		data.Weapon, _ = backend.FetchWeaponData("https://mhw-db.com/weapons")
+		data.Armor = armors.ArmorSets
+	}
+
+	templates.Temp.ExecuteTemplate(w, "collection", data)
+}

@@ -1,0 +1,226 @@
+{{define "collection"}}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="body-category">
+    <header>
+        <div class="header-category">
+            <div><img class="img-logo" src="/static/img/logomh-removebg-preview.png" alt="logo"></div>
+            <div class="all-search">
+                <form class="search" action="#" method="get">
+                    <input type="text" class="search-bar" placeholder="Search">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div>
+            <div class="all-category">
+                <div>
+                    <a href="/category?type=armor" class="category-armor">Armor</a>
+                </div>
+                <div>
+                    <a href="/category?type=weapon" class="category-weapon">Weapon</a>
+                </div>
+                <div>
+                    <a href="/category?type=monster" class="category-monster">Monster</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="collection">
+        <div class="collection-title">
+            <h1>Collection</h1>
+            <form action="/collection" method="GET" class="all-filter">
+                <div>
+                    <label for="weapon">Weapon</label>
+                    <input type="radio" id="weapon" name="collection" value="weapon">
+                </div>
+                <div>
+                    <label for="monster">Monster</label>
+                    <input type="radio" id="monster" name="collection" value="monster">
+                </div>
+                <div>
+                    <label for="armor">Armor</label>
+                    <input type="radio" id="armor" name="collection" value="armor">
+                </div>
+                <div>
+                    <h2>type weapon</h2>
+                    <div>
+                        <label for="gs">Great Swords</label>
+                        <input type="radio" id="gs" name="weapon" value="great-sword">
+                    </div>
+                    <div>
+                        <label for="ls">Long Swords</label>
+                        <input type="radio" id="ls" name="weapon" value="long-sword">
+                    </div>
+                    <div>
+                        <label for="hammer">Hammer</label>
+                        <input type="radio" id="hammer" name="weapon" value="hammer">
+                    </div>
+                    <div>
+                        <label for="lance">Lance</label>
+                        <input type="radio" id="lance" name="weapon" value="lance">
+                    </div>
+                    <div>
+                        <label for="bow">Bow</label>
+                        <input type="radio" id="bow" name="weapon" value="bow">
+                    </div>
+                    <div>
+                        <label for="hbg">Heavy Bowgun</label>
+                        <input type="radio" id="hbg" name="weapon" value="heavy-bowgun">
+                    </div>
+                    <div>
+                        <label for="lbg">Light Bowgun</label>
+                        <input type="radio" id="lbg" name="weapon" value="light-bowgun">
+                    </div>
+                    <div>
+                        <label for="sw">Switch Axe</label>
+                        <input type="radio" id="sw" name="weapon" value="option11">
+                    </div>
+                    <div>
+                        <label for="cb">Charge Blade</label>
+                        <input type="radio" id="cb" name="weapon" value="switch-axe">
+                    </div>
+                    <div>
+                        <label for="ig">Insect Glaive</label>
+                        <input type="radio" id="ig" name="weapon" value="insect-glaive">
+                    </div>
+                    <div>
+                        <label for="gl">Gunlance</label>
+                        <input type="radio" id="gl" name="weapon" value="gunlance">
+                    </div>
+                    <div>
+                        <label for="db">Dual Blades</label>
+                        <input type="radio" id="db" name="weapon" value="dual-blades">
+                    </div>
+                    <div>
+                        <label for="hb">Hunting Horn</label>
+                        <input type="radio" id="hb" name="weapon" value="hunting-horn">
+                    </div>
+                    <div>
+                        <label for="s&s">Sword & Shield</label>
+                        <input type="radio" id="s&s" name="weapon" value="sword-and-shield">
+                    </div>
+                    <h2>Armor Type</h2>
+                    <div>
+                        <label for="head">Head</label>
+                        <input type="radio" id="head" name="weapon" value="head">
+                    </div>
+                    <div>
+                        <label for="chest">Chest</label>
+                        <input type="radio" id="chest" name="weapon" value="chest">
+                    </div>
+                    <div>
+                        <label for="arm">Gloves</label>
+                        <input type="radio" id="Gloves" name="weapon" value="gloves">
+                    </div>
+                    <div>
+                        <label for="waist">Waist</label>
+                        <input type="radio" id="waist" name="weapon" value="waist">
+                    </div>
+                    <div>
+                        <label for="leg">Legs</label>
+                        <input type="radio" id="legs" name="weapon" value="legs">
+                    </div>
+                </div>
+                <h2>Monster Element</h2>
+                <div>
+                    <label for="fire">Fire</label>
+                    <input type="radio" id="fire" name="monster" value="fire">
+                </div>
+                <div>
+                    <label for="thunder">Thunder</label>
+                    <input type="radio" id="thunder" name="monster" value="thunder">
+                </div>
+                <div>
+                    <label for="water>/label>
+                    <input type="radio" id="thunder" name="monster" value="thunder">
+                </div>
+                <div>
+                    <label for="ice">Ice</label>
+                    <input type="radio" id="ice" name="monster" value="ice">
+                </div>
+                <div>
+                    <label for="dragon">Dragon</label>
+                    <input type="radio" id="dragon" name="monster" value="dragon">
+                </div>
+                <h2>Rarity</h2>
+                <div>
+                    <label for="rarity1">1</label>
+                    <input type="radio" id="rarity1" name="rarity" value="option28">
+                </div>
+                <div>
+                    <label for="rarity2">2</label>
+                    <input type="radio" id="rarity2" name="rarity" value="option29">
+                </div>
+                <div>
+                    <label for="rarity3">3</label>
+                    <input type="radio" id="rarity3" name="rarity" value="option30">
+                </div>
+                <div>
+                    <label for="rarity4">4</label>
+                    <input type="radio" id="rarity4" name="rarity" value="option31">
+                </div>
+                <div>
+                    <label for="rarity5">5</label>
+                    <input type="radio" id="rarity5" name="rarity" value="option32">
+                </div>
+                <div>
+                    <label for="rarity6">6</label>
+                    <input type="radio" id="rarity6" name="rarity" value="option33">
+                </div>
+                <div>
+                    <label for="rarity7">7</label>
+                    <input type="radio" id="rarity7" name="rarity" value="option34">
+                </div>
+                <div>
+                    <label for="rarity8">8</label>
+                    <input type="radio" id="rarity8" name="rarity" value="option35">
+                </div>
+                <div>
+                    <label for="rarity9">9</label>
+                    <input type="radio" id="rarity9" name="rarity" value="option36">
+                </div>
+                <div>
+                    <label for="rarity10">10</label>
+                    <input type="radio" id="rarity10" name="rarity" value="option37">
+                </div>
+                <div>
+                    <label for="rarity11">11</label>
+                    <input type="radio" id="rarity11" name="rarity" value="option38">
+                </div>
+                <div>
+                    <label for="rarity12">12</label>
+                    <input type="radio" id="rarity12" name="rarity" value="option39">
+                </div>
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{if .Monster}}
+    <h1>Monster</h1>
+    {{range .Monster}}
+        <p>{{.Name}}</p>
+    {{end}}
+    {{end}}
+    {{if .Armor}}
+    <h1>Armor</h1>
+    {{range .Armor}}
+        <p>{{.Name}}</p>
+    {{end}}
+    {{end}}
+    {{if .Weapon}}
+    <h1>Weapon</h1>
+    {{range .Weapon}}
+        <p>{{.Name}}</p>
+    {{end}}
+    {{end}}
+</body>
+</html>
+{{end}}

@@ -20,6 +20,7 @@ func InitServ() {
 	http.HandleFunc("/weapon", controller.WeaponPage)
 	http.HandleFunc("/add", controller.AddFav)
 	http.HandleFunc("/search", controller.SearchFunc)
+	http.HandleFunc("/collection", controller.CollectionPage)
 
 	//Init serv
 	log.Println(" Serveur lancé !")
