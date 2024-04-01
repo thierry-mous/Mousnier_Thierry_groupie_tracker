@@ -1,4 +1,4 @@
-{{define "favorite"}}
+{{define "favorite-page"}}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,7 +11,7 @@
 <body class="body-category">
     <header>
         <div class="header-category">
-            <a href="/accueil"><img class="img-logo" src="/static/img/logomh-removebg-preview.png" alt="logo"></div></a>
+            <a href="/accueil"><img class="img-logo" src="/static/img/logomh-removebg-preview.png" alt="logo"></a>
             <div class="all-search">
                 <form class="search" action="/search" method="get">
                     <input type="text" class="search-bar" placeholder="Search">
@@ -31,8 +31,22 @@
             </div>
         </div>
     </header>
-
-    
+    {{range .Armor}}
+    <div class="armor-content">
+        <h3>{{.Name}}</h3>
+        <div class="armor-container">
+            {{range .Pieces}}
+            <a href="/armor?id={{.ID}}">
+                <div class="armor-piece">
+                <p>Type: {{.Type}}</p>
+                <p>Rarity: {{.Rarity}}</p>
+                <img src="{{.Assets2.ImageMale2}}">
+            </div>
+            </a>
+            {{end}}
+        </div>
+    </div>
+    {{end}}
     <footer>
         <div class="footer">
             <div class="footer-social">

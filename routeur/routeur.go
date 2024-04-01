@@ -21,6 +21,7 @@ func InitServ() {
 	http.HandleFunc("/add", controller.AddFav)
 	http.HandleFunc("/search", controller.SearchFunc)
 	http.HandleFunc("/collection", controller.CollectionPage)
+	http.HandleFunc("/favorite-page", controller.FavoritePage)
 
 	//Init serv
 	log.Println(" Serveur lancé !")

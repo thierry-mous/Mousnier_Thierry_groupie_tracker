@@ -221,6 +221,7 @@ type ResultFilter struct {
 	Monster []backend.Monster
 	Armor   []backend.ArmorSet
 	Weapon  []backend.Weapon
+	
 }
 
 func CollectionPage(w http.ResponseWriter, r *http.Request) {
@@ -301,4 +302,77 @@ func CollectionPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	templates.Temp.ExecuteTemplate(w, "collection", data)
+}
+
+
+func FavoritePage(w http.ResponseWriter, r *http.Request) {
+	file, err := os.Open("favorite.json")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	defer file.Close()
+
+	var favorites Favorites
+	err = json.NewDecoder(file).Decode(&favorites)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	var data ResultFilter
+	monsters, err := backend.FetchMonsterData("https://mhw-db.com/monsters")
+	if err != nil {
+		fmt.Println("Erreur lors de la récupération des données de monstres:", err)
+		http.Error(w, "Erreur lors de la récupération des données de monstres", http.StatusInternalServerError)
+		return
+	}
+	data.Monster = monsters
+
+	armorSets, err := backend.FetchArmorSets("https://mhw-db.com/armor/sets")
+	if err != nil {
+		fmt.Println("Erreur lors de la récupération des données:", err)
+		return
+	}
+	data.Armor = armorSets.ArmorSets
+
+	weapons, err := backend.FetchWeaponData("https://mhw-db.com/weapons")
+	if err != nil {
+		fmt.Println("Erreur lors de la récupération des données d'armes:", err)
+		http.Error(w, "Erreur lors de la récupération des données d'armes", http.StatusInternalServerError)
+		return
+	}
+	data.Weapon = weapons
+
+	var dataFav ResultFilter
+	for _, monster := range data.Monster {
+		for _, id := range favorites.ListMonster {
+			if monster.ID == id {
+				dataFav.Monster = append(dataFav.Monster, monster)
+			}
+		}
+	}
+
+	for _, armor := range data.Armor {
+		for _, id := range favorites.ListArmor {
+			if armor.ID == id.IdArmor {
+				for _, piece := range armor.Pieces {
+					if piece.ID == id.IdPiece {
+						dataFav.Armor = append(dataFav.Armor, armor)
+					}
+				}
+			}
+		}
+	}
+
+	for _, weapon := range data.Weapon {
+		for _, id := range favorites.ListWeapon {
+			if weapon.ID == id {
+				dataFav.Weapon = append(dataFav.Weapon, weapon)
+			}
+		}
+	}
+
+	fmt.Println(dataFav)
+	templates.Temp.ExecuteTemplate(w, "favorite-page", dataFav)
 }
