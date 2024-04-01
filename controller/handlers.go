@@ -242,14 +242,13 @@ func CollectionPage(w http.ResponseWriter, r *http.Request) {
 
 		if filterMonster != "" {
 			var ListFilterMonster []backend.Monster
-			for _, Monster := range data.Monster {
-				for _, Elements := range Monster.Elements {
-					if strings.Contains(Elements, filterMonster) {
-						ListFilterMonster = append(ListFilterMonster, Monster)
+			for _, monster := range data.Monster {
+				for _, element := range monster.Elements {
+					if strings.Contains(element, filterMonster) {
+						ListFilterMonster = append(ListFilterMonster, monster)
 						break
 					}
 				}
-
 			}
 			data.Monster = ListFilterMonster
 		}

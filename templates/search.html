@@ -10,9 +10,9 @@
 <body class="body-category">
     <header>
         <div class="header-category">
-            <div><img class="img-logo" src="/static/img/logomh-removebg-preview.png" alt="logo"></div>
+            <a href="/accueil"><img class="img-logo" src="/static/img/logomh-removebg-preview.png" alt="logo"></div></a>
             <div class="all-search">
-                <form class="search" action="#" method="get">
+                <form class="search" action="/search" method="get">
                     <input type="text" class="search-bar" placeholder="Search">
                     <button type="submit" class="search-btn">Search</button>
                 </form>
@@ -30,6 +30,49 @@
             </div>
         </div>
     </header>
-    <p>{{.}}</p>
+    <div class="all-weapon">
+        {{range .}}
+        <div class="content">
+            <div class="box-category-weapons">
+                <div class="weapon-info">
+                    <h3>{{.Name}}</h3>
+                    <div class="weapon-details">
+                        <a href="/weapon?id={{.ID}}">
+                            <div>
+                                <p>Type: {{.Type}}</p>
+                                <img src="{{.Assets.Image}}" alt="Weapon Image">
+                                <p>Damage Type: {{.DamageType}}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer-social">
+                <div>
+                    <a href="" class="social-facebook">Facebook</a>
+                </div>
+                <div>
+                    <a href="" class="social-twitter">X</a>
+                </div>
+                <div>
+                    <a href="" class="social-instagram">Instagram</a>
+                </div>
+            </div>
+            <div class="img-logo">
+                <img src="/static/img/logomh-removebg-preview.png" alt="logo">
+            </div>
+            <div class="page">
+                <a href="/about.html">about</a>
+                <a href="#">legal notice</a>
+            </div>
+           
+        </div>
+    </footer>
 </body>
+</html>
 {{end}}

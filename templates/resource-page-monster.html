@@ -10,9 +10,9 @@
 <body class="body-category">
     <header>
         <div class="header-category">
-                <div><img class="img-logo" src="/static/img/logomh-removebg-preview.png" alt="logo"></div>
+            <a href="/accueil"><img class="img-logo" src="/static/img/logomh-removebg-preview.png" alt="logo"></div></a>
                 <div class="all-search">
-                    <form class="search" action="#" method="get">
+                    <form class="search" action="/search" method="get">
                         <input type="text" class="search-bar" placeholder="Search">
                         <button type="submit" class="search-btn">Search</button>
                     </form>
@@ -32,7 +32,7 @@
     </header>
     <div class="content">
         <div class="start-monster">
-              <h1>{{.Name}}</h1>
+              <h1 class="title-monster">{{.Name}}</h1>
         <p><strong>Type:</strong> {{.Type}}</p>
         <p><strong>Species:</strong> {{.Species}}</p>
         <p><strong>Elements:</strong> {{range .Elements}}{{.}}, {{end}}</p>
@@ -93,7 +93,7 @@
                 <img src="/static/img/logomh-removebg-preview.png" alt="logo">
             </div>
             <div class="page">
-                <a href="about.html">about</a>
+                <a href="/about.html">about</a>
                 <a href="#">legal notice</a>
             </div>
            
